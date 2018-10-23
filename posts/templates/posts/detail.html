@@ -1,0 +1,30 @@
+{% extends 'posts/base.html' %}
+{% block title %} {{ post.title }} {% endblock %}
+{% block body %}
+<div class="container-fluid">
+<div class="row">
+   <div class="col-md-4">
+        <br>
+       <div class="img img-responsive">
+
+           <img src="{{ post.image.url }}" class="img img-thumbnail">
+       </div>
+       <div class="caption">
+
+           <h4 class="text-center text-primary">{{ post.title }}</h4>
+       </div>
+   </div>
+    <div class="col-md-8">
+        <hr>
+        <p style="font-size: 22 px; font-family: 'Droid Sans';">{{ post.body }}</p>
+
+        <a href="#" class="btn btn-primary">Edit</a>
+        <a href="{% url 'posts:delete' post.id %}" class="btn btn-warning">Delete</a>
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}

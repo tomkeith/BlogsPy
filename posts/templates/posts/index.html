@@ -1,0 +1,28 @@
+
+{% extends 'posts/base.html' %}
+{% block title %} Blog {% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+{% if posts %}
+        {% for post in posts %}
+        <div class="col-md-3 col-lg-3">
+            <a href="{% url 'posts:detail' post.id %}" class="thumbnail">
+                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            </a>
+            <div class="caption">
+                <a href="{% url 'posts:detail' post.id %}"> <h3>{{ post.title }}</h3></a>
+                    <a href="{% url 'posts:favorite' post.id %}" class="btn btn-favorite" role="button">
+                        <span class="glyphicon glyphicon-star {% if post.is_favorite %}active{% endif %}"></span>
+                    </a>
+            <a href="{% url 'posts:detail' post.id %}" class="btn btn-primary btn-sm" role="button">Details</a>
+            </div>
+
+        </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+
+</div>
+{% endblock %}
